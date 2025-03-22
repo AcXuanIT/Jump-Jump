@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public enum ModeGame
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Play,
+    EndGame,
+    Pause
+}
 
-    // Update is called once per frame
-    void Update()
+public class GameController : Singleton<GameController>
+{
+    public ModeGame modeGame;
+
+    [SerializeField] private float speedGame;
+
+    public float SpeedGame
     {
-        
+        get => this.speedGame;
+        set => this.speedGame = value;
     }
 }

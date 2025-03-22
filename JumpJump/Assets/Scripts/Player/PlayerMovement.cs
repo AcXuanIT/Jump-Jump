@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private float pressVertical;
 
     [SerializeField] private float speed;
+    [SerializeField] private Animator animationPlayer;
+
+    [SerializeField] private float maxX;
+    [SerializeField] private float minX;
 
     private void Awake()
     {
@@ -16,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (GameController.Instance.modeGame != ModeGame.Play) return;
+
         this.Movement();
     }
 
@@ -30,13 +36,36 @@ public class PlayerMovement : MonoBehaviour
 
         if (pressHorizontal > 0)
         {
-            rd.velocity = this.speed * Vector2.right * Time.deltaTime;
+            if (this.maxX <= transform.position.x)
+            {
+                rd.velocity = new Vector2(0, rd.velocity.y);
+                return;
+            }
+
+            this.Move();
+            rd.transform.localScale = new Vector3(1, 1, 1);
         }
         else if (pressHorizontal < 0)
         {
-            rd.velocity = this.speed * Vector2.left * Time.deltaTime;
+            if (this.minX >= transform.position.x)
+            {
+                rd.velocity = new Vector2(0, rd.velocity.y);
+                return;
+            }
+
+            this.Move();
+            rd.transform.localScale = new Vector3(-1, 1, 1);
         }
         else
-            rd.velocity = Vector2.zero;
+        {
+            rd.velocity = new Vector2(0, rd.velocity.y);
+            animationPlayer.SetBool("Run", false);
+        }
+    }
+
+    public void Move()
+    {
+        rd.velocity = new Vector2(speed * this.pressHorizontal * Time.deltaTime, rd.velocity.y);
+        animationPlayer.SetBool("Run", true);
     }
 }
