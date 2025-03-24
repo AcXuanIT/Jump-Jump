@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPlank : MonoBehaviour
+public class SpawnWindow : MonoBehaviour
 {
     [SerializeField] private GameObject plankPrefab;
     [SerializeField] private Transform spawnPlank;
@@ -22,7 +22,7 @@ public class SpawnPlank : MonoBehaviour
     }
     public void SpawnStart()
     {
-        for(int i = 0; i < listPositionPlankStart.Count; i++)
+        for (int i = 0; i < listPositionPlankStart.Count; i++)
         {
             PoolingManager.Spawn(plankPrefab, listPositionPlankStart[i], Quaternion.identity, spawnPlank);
         }
