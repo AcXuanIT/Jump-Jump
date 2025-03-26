@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float maxX;
     [SerializeField] private float minX;
-
     private void Awake()
     {
         this.rd = GetComponent<Rigidbody2D>();
@@ -59,13 +58,17 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rd.velocity = new Vector2(0, rd.velocity.y);
-            animationPlayer.SetBool("Run", false);
         }
     }
 
     public void Move()
     {
         rd.velocity = new Vector2(speed * this.pressHorizontal * Time.deltaTime, rd.velocity.y);
-        animationPlayer.SetBool("Run", true);
+        this.AnimatorMovement();
+    }
+
+    public void AnimatorMovement()
+    {
+        animationPlayer.SetFloat("xVelocity", Mathf.Abs(rd.velocity.x));
     }
 }

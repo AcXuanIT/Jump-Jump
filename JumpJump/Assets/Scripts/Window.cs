@@ -26,11 +26,11 @@ public class Window : MonoBehaviour
 
     public void Up()
     {
-        rd.velocity = Time.deltaTime * GameController.Instance.SpeedGame * Vector2.up;
+        rd.velocity = Time.deltaTime * GameController.Instance.SpeedGame * Vector2.down;
     }
     public bool checkDestroy()
     {
-        return transform.position.y >= this.desY;
+        return transform.position.y <= this.desY;
     }
     public void DestroyPlank()
     {

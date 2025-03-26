@@ -9,7 +9,7 @@ public class PlayerDoubleJump : MonoBehaviour
     [SerializeField] private Animator animatorPlayer;
     [SerializeField] private float maxY;
  
-    private bool isJump;
+    private bool isGround;
     private bool isDoubleJump;
 
     private void Awake()
@@ -23,24 +23,26 @@ public class PlayerDoubleJump : MonoBehaviour
 
         this.CheckJump();
         this.checkPosition();
+        animatorPlayer.SetFloat("yVelocity", rd.velocity.y);
     }
 
     public void CheckJump()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(isJump)
+            if(isGround)
             {
                 this.Jump();
-                this.isJump = false;
+                this.isGround = false;
                 this.isDoubleJump = true;
-                this.animatorPlayer.SetBool("Jump", true);
+                animatorPlayer.SetBool("isJumping", true);
             }
             else if(isDoubleJump)
             {
                 this.Jump();
+                animatorPlayer.SetBool("isJumping", false);
                 this.isDoubleJump = false;
-                this.animatorPlayer.SetBool("Jump", true);
+                animatorPlayer.SetBool("isJumping", true);
             }
         }
     }
@@ -49,7 +51,6 @@ public class PlayerDoubleJump : MonoBehaviour
     {
         this.rd.velocity = new Vector2(rd.velocity.x, this.jumpForce);
     }
-
     public void checkPosition()
     {
         if (transform.position.y >= maxY)
@@ -64,9 +65,9 @@ public class PlayerDoubleJump : MonoBehaviour
     {
         if(collision.CompareTag("Plank"))
         {
-            this.isJump = true;
+            this.isGround = true;
             this.isDoubleJump = false;
-            this.animatorPlayer.SetBool("Jump", false);
+            animatorPlayer.SetBool("isJumping", false);
         }
     }
 }

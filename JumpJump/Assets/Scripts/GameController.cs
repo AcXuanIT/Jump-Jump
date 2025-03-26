@@ -18,7 +18,7 @@ public class GameController : Singleton<GameController>
 
     private void Update()
     {
-        this.UpSpeed();
+       // this.UpSpeed();
     }
     public float SpeedGame
     {
