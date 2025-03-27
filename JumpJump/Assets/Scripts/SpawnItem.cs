@@ -32,7 +32,7 @@ public class SpawnItem : MonoBehaviour
     {
         for (int i = 0; i < listPositionObjectStart.Count; i++)
         {
-            PoolingManager.Spawn(objectPrefabs[RandomPrefabs()], listPositionObjectStart[i], Quaternion.identity, spawnObject);
+            PoolingManager.Spawn(objectPrefabs[0], listPositionObjectStart[i], Quaternion.identity, spawnObject);
         }
     }
     public Vector3 RandomPosition()

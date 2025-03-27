@@ -6,10 +6,17 @@ public class Plank : MonoBehaviour
 {
     private Rigidbody2D rd;
     [SerializeField] private float desY;
-
+    private bool isNew;
+    
+    public bool IsNew
+    {
+        get => isNew;
+        set => isNew = value;
+    }
     private void Awake()
     {
         rd = GetComponent<Rigidbody2D>();
+        isNew = true;
     }
 
     private void Update()
@@ -36,4 +43,5 @@ public class Plank : MonoBehaviour
     {
         PoolingManager.Destroy(gameObject);
     }
+
 }

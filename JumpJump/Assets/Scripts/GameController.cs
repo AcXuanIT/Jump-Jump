@@ -16,6 +16,17 @@ public class GameController : Singleton<GameController>
     private float timeer = 0f;
     private float timeDelay = 2f;
 
+    [Space]
+    [Header("Score")]
+    [SerializeField] private int scoreGame;
+    [SerializeField] private int coinGame;
+    [SerializeField] private int diamondGame;
+    private void Start()
+    {
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpScore, UpdateScore);
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpCoin, UpdateCoin);
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpDiamond, UpdateDiamond);
+    }
     private void Update()
     {
        // this.UpSpeed();
@@ -33,5 +44,21 @@ public class GameController : Singleton<GameController>
         timeer = 0;
 
         this.speedGame += 1f;
+    }
+
+    public void UpdateScore(object score)
+    {
+        this.scoreGame += (int)score;
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.UpScoreText, this.scoreGame);
+    }
+    public void UpdateCoin(object obj)
+    {
+        this.coinGame += (int)obj;
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.UpCoinText, this.coinGame);
+    }
+    public void UpdateDiamond(object obj)
+    {
+        this.diamondGame += (int)obj;
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.UpDiamondText, this.diamondGame);
     }
 }
