@@ -11,6 +11,9 @@ public enum IDGameEven
     UpDiamond,
     UpDiamondText,
     Heart,
+    TimeDelay,
+    SpawnCoin,
+    SpawnDiamond,
 }
 
     

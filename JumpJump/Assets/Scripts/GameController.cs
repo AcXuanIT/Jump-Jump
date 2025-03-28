@@ -13,14 +13,20 @@ public class GameController : Singleton<GameController>
 {
     public ModeGame modeGame;
     [SerializeField] private float speedGame;
-    private float timeer = 0f;
-    private float timeDelay = 2f;
 
     [Space]
     [Header("Score")]
     [SerializeField] private int scoreGame;
     [SerializeField] private int coinGame;
     [SerializeField] private int diamondGame;
+    private int lastScore;
+
+    [Space]
+    [Header("Item")]
+    private int planks;
+    private int plankslate;
+    private int coins;
+    private int coinslate;
     private void Start()
     {
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpScore, UpdateScore);
@@ -29,21 +35,41 @@ public class GameController : Singleton<GameController>
     }
     private void Update()
     {
-       // this.UpSpeed();
+        this.UpSpeed();
     }
     public float SpeedGame
     {
         get => this.speedGame;
-        set => this.speedGame = value;
     }
-
+    public int Planks
+    {
+        get => this.planks;
+        set => this.planks = value;
+    }
+    public int PlanksLate
+    {
+        get => this.plankslate;
+        set => this.plankslate = value;
+    }
+    public int Coins
+    {
+        get => this.coins;
+        set => this.coins = value;
+    }
+    public int CoinsLate
+    {
+        get => this.coinslate;
+        set => this.coinslate = value;
+    }
     public void UpSpeed()
     {
-        timeer += Time.deltaTime;
-        if (timeer < timeDelay) return;
-        timeer = 0;
-
-        this.speedGame += 1f;
+        if(scoreGame >= lastScore + 50)
+        {
+            float x = 1f + (scoreGame)*1f / 1000;
+            this.speedGame *= x;
+            ObserverManager<IDGameEven>.PostEven(IDGameEven.TimeDelay, x );
+            this.lastScore = scoreGame;
+        }
     }
 
     public void UpdateScore(object score)

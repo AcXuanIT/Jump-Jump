@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     {
         if(DeadY >= transform.position.y)
         {
-            Destroy(gameObject);
+            ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, 2);
+            gameObject.transform.position = Vector3.zero;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

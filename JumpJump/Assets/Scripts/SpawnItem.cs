@@ -19,10 +19,13 @@ public class SpawnItem : MonoBehaviour
     [SerializeField] private float minXrandom;
     [SerializeField] private float maxXrandom;
     [SerializeField] private float Yconst;
+    [SerializeField] private int randomNext;
 
     private void Awake()
     {
+        this.randomNext = Random.Range(6, 11);
         this.SpawnStart();
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.TimeDelay, UpTimeDelay);
     }
     private void Update()
     {
@@ -32,7 +35,8 @@ public class SpawnItem : MonoBehaviour
     {
         for (int i = 0; i < listPositionObjectStart.Count; i++)
         {
-            PoolingManager.Spawn(objectPrefabs[0], listPositionObjectStart[i], Quaternion.identity, spawnObject);
+            GameObject newObj = PoolingManager.Spawn(objectPrefabs[0], listPositionObjectStart[i], Quaternion.identity, spawnObject);
+            checkPlank(newObj);
         }
     }
     public Vector3 RandomPosition()
@@ -50,6 +54,33 @@ public class SpawnItem : MonoBehaviour
         if (timeSpawn < timeDelay) return;
         timeSpawn = 0;
 
-        PoolingManager.Spawn(objectPrefabs[RandomPrefabs()], RandomPosition(), Quaternion.identity, spawnObject);
+        GameObject newobj = PoolingManager.Spawn(objectPrefabs[RandomPrefabs()], RandomPosition(), Quaternion.identity, spawnObject);
+        checkPlank(newobj);
+    }
+
+    public void UpTimeDelay(object obj)
+    {
+        this.timeDelay /= (float)obj;
+    }
+
+    public void checkPlank(GameObject obj)
+    {
+        if(obj.CompareTag("Plank"))
+        {
+            GameController.Instance.Planks++;
+
+            if(GameController.Instance.Planks >= GameController.Instance.PlanksLate + randomNext)
+            {
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnCoin, obj);
+                GameController.Instance.Coins++;
+                GameController.Instance.PlanksLate += randomNext;
+                this.randomNext = Random.Range(6, 11);
+            }
+            else if(GameController.Instance.Coins >= GameController.Instance.CoinsLate + 5)
+            {
+                GameController.Instance.CoinsLate += 5;
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnDiamond, obj);
+            }
+        }    
     }
 }
