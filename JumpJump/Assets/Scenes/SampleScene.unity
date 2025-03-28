@@ -3943,6 +3943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553838879}
   - component: {fileID: 1553838878}
+  - component: {fileID: 1553838880}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -3965,6 +3966,7 @@ MonoBehaviour:
   textScore: {fileID: 1684688046}
   textCoin: {fileID: 1729792947}
   textDiamond: {fileID: 1849595144}
+  sprites: []
 --- !u!4 &1553838879
 Transform:
   m_ObjectHideFlags: 0
@@ -3980,6 +3982,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1553838880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553838877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617394dbc017f046b049ea3cabe52c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -676103951, guid: 9c84c547a71a8fa41af6b37db93248c5, type: 3}
+  - {fileID: 299429071, guid: 9c84c547a71a8fa41af6b37db93248c5, type: 3}
+  - {fileID: -407040421, guid: 9c84c547a71a8fa41af6b37db93248c5, type: 3}
+  allHeart:
+  - {fileID: 2098642874}
+  - {fileID: 415686775}
+  - {fileID: 491612168}
 --- !u!1 &1684688044
 GameObject:
   m_ObjectHideFlags: 0
@@ -4493,6 +4515,7 @@ GameObject:
   - component: {fileID: 1984256959}
   - component: {fileID: 1984256960}
   - component: {fileID: 1984256961}
+  - component: {fileID: 1984256962}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4693,6 +4716,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1984256962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984256954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe45b87bd0031c848812f9d493ddfb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeadY: -6
 --- !u!1 &1990774298
 GameObject:
   m_ObjectHideFlags: 0

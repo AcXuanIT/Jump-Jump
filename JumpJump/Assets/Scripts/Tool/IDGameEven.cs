@@ -10,6 +10,7 @@ public enum IDGameEven
     UpCoinText,
     UpDiamond,
     UpDiamondText,
+    Heart,
 }
 
     

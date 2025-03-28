@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [Space]
+    [Header("Score")]
     [SerializeField] private TextMeshProUGUI textScore;
     [SerializeField] private TextMeshProUGUI textCoin;
     [SerializeField] private TextMeshProUGUI textDiamond;
+    [Space]
+    [Header("Heart")]
+    [SerializeField] private List<Sprite> sprites;
 
     private void Awake()
     {

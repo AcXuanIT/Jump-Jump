@@ -71,31 +71,4 @@ public class PlayerMovement : MonoBehaviour
     {
         animationPlayer.SetFloat("xVelocity", Mathf.Abs(rd.velocity.x));
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Plank"))
-        {
-            if(collision.TryGetComponent(out Plank plank))
-            {
-                if(plank.IsNew)
-                {
-                    plank.IsNew = false;
-                    ObserverManager<IDGameEven>.PostEven(IDGameEven.UpScore, 1);
-                }
-            }
-        }
-        else if(collision.CompareTag("Coin"))
-        {
-            ObserverManager<IDGameEven>.PostEven(IDGameEven.UpScore, 10);
-            ObserverManager<IDGameEven>.PostEven(IDGameEven.UpCoin, 1);
-            Destroy(collision.gameObject);
-        }
-        else if(collision.CompareTag("Diamond"))
-        {
-            ObserverManager<IDGameEven>.PostEven(IDGameEven.UpScore, 100);
-            ObserverManager<IDGameEven>.PostEven(IDGameEven.UpDiamond, 1);
-            Destroy(collision.gameObject);
-        }
-    }
 }
