@@ -9,7 +9,6 @@ public class CameraEdit : MonoBehaviour
 
     void Start()
     {
-    
         float targetAspect = targetWidth / targetHeight;
         float screenAspect = (float)Screen.width / Screen.height;
         Camera.main.orthographicSize *= targetAspect / screenAspect;

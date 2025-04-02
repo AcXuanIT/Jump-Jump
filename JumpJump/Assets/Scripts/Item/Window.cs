@@ -14,9 +14,8 @@ public class Window : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Instance.modeGame != ModeGame.Play) return;
 
-        Up();
+        Down();
 
         if (checkDestroy())
         {
@@ -24,7 +23,7 @@ public class Window : MonoBehaviour
         }
     }
 
-    public void Up()
+    public void Down()
     {
         rd.velocity = Time.deltaTime * GameController.Instance.SpeedGame * Vector2.down;
     }

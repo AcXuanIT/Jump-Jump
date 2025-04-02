@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111a6bd4e27976741ab4a0bb6ad49d6d, type: 3}
+  m_Name: Character
+  m_EditorClassIdentifier: 
+  characterInfos:
+  - animationHome: {fileID: 9100000, guid: 7dc8a4a75d28bbe4489f055bada45100, type: 2}
+    animationGame: {fileID: 9100000, guid: fd44966f71c345146b30c5fb32d85495, type: 2}
+    price: 1
+    backGround: {fileID: 21300000, guid: 108b4a59f0db0f246b94cdef4f4d7f72, type: 3}
+    isCoinAndDiamond: 0
+    isOwn: 1
+  - animationHome: {fileID: 9100000, guid: 26f0922ff892f1a4d8a86855ca635efa, type: 2}
+    animationGame: {fileID: 9100000, guid: 56927f5b2356a7f4585461afe62b1016, type: 2}
+    price: 1212
+    backGround: {fileID: 21300000, guid: 8d1ec99e578e11b48bc748522c2f3c39, type: 3}
+    isCoinAndDiamond: 0
+    isOwn: 1
+  - animationHome: {fileID: 9100000, guid: 88ce543b0666c0a479bda89e4b6e621e, type: 2}
+    animationGame: {fileID: 9100000, guid: bf1d291f64e104647b8382c88c26aacb, type: 2}
+    price: 9999
+    backGround: {fileID: 21300000, guid: 97a19f11dae88de4aba6dd97be087c6b, type: 3}
+    isCoinAndDiamond: 1
+    isOwn: 1

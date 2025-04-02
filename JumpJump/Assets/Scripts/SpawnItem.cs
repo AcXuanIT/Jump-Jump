@@ -26,9 +26,12 @@ public class SpawnItem : MonoBehaviour
         this.randomNext = Random.Range(6, 11);
         this.SpawnStart();
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.TimeDelay, UpTimeDelay);
+        //ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.StartSpawn, SpawnStart);
     }
     private void Update()
     {
+        if (GameController.Instance.Mode != ModeGame.Play) return;
+
         Spawn();
     }
     public void SpawnStart()
@@ -50,6 +53,8 @@ public class SpawnItem : MonoBehaviour
     }
     public void Spawn()
     {
+        if (GameController.Instance.Mode != ModeGame.Play) return;
+
         timeSpawn += Time.deltaTime;
         if (timeSpawn < timeDelay) return;
         timeSpawn = 0;

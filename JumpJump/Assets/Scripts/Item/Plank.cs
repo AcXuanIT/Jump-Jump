@@ -21,8 +21,6 @@ public class Plank : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Instance.modeGame != ModeGame.Play) return;
-
         Down();
 
         if(checkDestroy())

@@ -19,7 +19,7 @@ public class PlayerDoubleJump : MonoBehaviour
     }
     private void Update()
     {
-        if (GameController.Instance.modeGame != ModeGame.Play) return;
+        if (GameController.Instance.Mode != ModeGame.Play) return;
 
         this.CheckJump();
         this.checkPosition();
@@ -49,6 +49,7 @@ public class PlayerDoubleJump : MonoBehaviour
 
     public void Jump()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.audioJump);
         this.rd.velocity = new Vector2(rd.velocity.x, this.jumpForce);
     }
     public void checkPosition()

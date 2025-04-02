@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textScore;
     [SerializeField] private TextMeshProUGUI textCoin;
     [SerializeField] private TextMeshProUGUI textDiamond;
+
     [Space]
-    [Header("Heart")]
-    [SerializeField] private List<Sprite> sprites;
+    [Header("Button")]
+    [SerializeField] private Button btnSetting;
+    [SerializeField] private GameObject menuSetting;
 
     private void Awake()
     {
@@ -21,6 +24,14 @@ public class UIManager : MonoBehaviour
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpDiamondText, UpTextDiamond);   
     }
 
+    private void Start()
+    {
+        btnSetting.onClick.AddListener(delegate
+        {
+            GameController.Instance.PauseGame();
+            menuSetting.SetActive(true);
+        });
+    }
     public void UpTextScore(object obj)
     {
         textScore.text = obj.ToString();
@@ -41,4 +52,5 @@ public class UIManager : MonoBehaviour
         else
             textDiamond.text = "999+";
     }
+
 }
