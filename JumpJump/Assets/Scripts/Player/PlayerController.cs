@@ -1,22 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float DeadY;
     [SerializeField] private Animator amin;
+    [SerializeField] private Image imageSKill;
+    private bool isCanUseSkill;
     private void Start()
     {
+        this.isCanUseSkill = true;
         Init();
     }
     private void Update()
     {
         this.CheckDead();
+
+        if (Input.GetKeyDown(KeyCode.E) && this.isCanUseSkill)
+        {
+            ObserverManager<IDGameEven>.PostEven(IDGameEven.Skill, PlayerPrefs.GetInt("IndexSelect", 0));
+            this.isCanUseSkill = false;
+            StartCoroutine("timeDelaySkill", GameController.Instance.Data.characterInfos[PlayerPrefs.GetInt("IndexSelect", 0)].timeDelaySkill[GameController.Instance.Data.characterInfos[PlayerPrefs.GetInt("IndexSelect", 0)].levelSkill]);
+        }
     }
     public void Init()
     {
-        amin.runtimeAnimatorController = GameController.Instance.Data.characterInfos[PlayerPrefs.GetInt("IndexPlayer", 0)].animationGame;
+        amin.runtimeAnimatorController = GameController.Instance.Data.characterInfos[PlayerPrefs.GetInt("IndexSelect", 0)].animationGame;
+        imageSKill.sprite = GameController.Instance.Data.characterInfos[PlayerPrefs.GetInt("IndexSelect", 0)].skillSprite;
     }
     public void CheckDead()
     {
@@ -61,5 +73,12 @@ public class PlayerController : MonoBehaviour
             ObserverManager<IDGameEven>.PostEven(IDGameEven.UpDiamond, 1);
             Destroy(collision.gameObject);
         }
+    }
+
+
+    IEnumerator timeDelaySkill(float time)
+    {
+        yield return new WaitForSeconds(time);
+        this.isCanUseSkill = true;
     }
 }

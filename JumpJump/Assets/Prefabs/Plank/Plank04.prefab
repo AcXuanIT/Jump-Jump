@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desY: -9
+  yPostranfer: 3.5
 --- !u!50 &2688910512557105931
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 6494875847615118340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.21, z: 0}
+  m_LocalPosition: {x: 0, y: 0.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

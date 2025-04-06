@@ -6,6 +6,7 @@ public class Plank : MonoBehaviour
 {
     private Rigidbody2D rd;
     [SerializeField] private float desY;
+    [SerializeField] private float yPostranfer;
     private bool isNew;
     
     public bool IsNew
@@ -22,6 +23,8 @@ public class Plank : MonoBehaviour
     private void Update()
     {
         Down();
+
+        checkPosSkill();
 
         if(checkDestroy())
         {
@@ -42,4 +45,15 @@ public class Plank : MonoBehaviour
         PoolingManager.Destroy(gameObject);
     }
 
+    public void checkPosSkill()
+    {
+        if (gameObject.transform.position.y <= yPostranfer)
+        {
+            this.PushPlank(gameObject.GetComponent<Plank>());
+        }
+    }
+    public void PushPlank(Plank plank)
+    {
+        SkillController.Instance.Plank = plank;
+    }
 }

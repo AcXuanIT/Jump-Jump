@@ -17,17 +17,59 @@ MonoBehaviour:
     animationGame: {fileID: 9100000, guid: fd44966f71c345146b30c5fb32d85495, type: 2}
     price: 1
     backGround: {fileID: 21300000, guid: 108b4a59f0db0f246b94cdef4f4d7f72, type: 3}
+    skillSprite: {fileID: 21300000, guid: 1a35245d41de1054b875260896ce4026, type: 3}
+    levelSkill: 0
+    timeDelaySkill:
+    - 10
+    - 7
+    - 4
     isCoinAndDiamond: 0
     isOwn: 1
   - animationHome: {fileID: 9100000, guid: 26f0922ff892f1a4d8a86855ca635efa, type: 2}
     animationGame: {fileID: 9100000, guid: 56927f5b2356a7f4585461afe62b1016, type: 2}
     price: 1212
     backGround: {fileID: 21300000, guid: 8d1ec99e578e11b48bc748522c2f3c39, type: 3}
+    skillSprite: {fileID: 21300000, guid: 1492cb956994c89499ce81b76bec8236, type: 3}
+    levelSkill: 0
+    timeDelaySkill:
+    - 15
+    - 11
+    - 6
     isCoinAndDiamond: 0
     isOwn: 1
   - animationHome: {fileID: 9100000, guid: 88ce543b0666c0a479bda89e4b6e621e, type: 2}
     animationGame: {fileID: 9100000, guid: bf1d291f64e104647b8382c88c26aacb, type: 2}
     price: 9999
     backGround: {fileID: 21300000, guid: 97a19f11dae88de4aba6dd97be087c6b, type: 3}
+    skillSprite: {fileID: 21300000, guid: 86b5327c14699e6428d3c129f744b65f, type: 3}
+    levelSkill: 0
+    timeDelaySkill:
+    - 8
+    - 5
+    - 3
+    isCoinAndDiamond: 1
+    isOwn: 1
+  - animationHome: {fileID: 9100000, guid: e51e68da061e149469fbb9541cda10ab, type: 2}
+    animationGame: {fileID: 9100000, guid: d7cd72c06b012944b88e1652d25e535c, type: 2}
+    price: 1
+    backGround: {fileID: 21300000, guid: 442ea958d8bf54d4c8985ace70dd4512, type: 3}
+    skillSprite: {fileID: 21300000, guid: 8196c4d2779060a479192858ac75fa8e, type: 3}
+    levelSkill: 0
+    timeDelaySkill:
+    - 14
+    - 9
+    - 4
+    isCoinAndDiamond: 1
+    isOwn: 1
+  - animationHome: {fileID: 9100000, guid: 8a678159c2b849b4a88f9ac5424d07a8, type: 2}
+    animationGame: {fileID: 9100000, guid: aa1f9e97079281045a48be2840562095, type: 2}
+    price: 1
+    backGround: {fileID: 21300000, guid: d9de4082de9d4a74ebce61c1fe5d6b56, type: 3}
+    skillSprite: {fileID: 21300000, guid: dc7a092b09feac44d97bf240db74ae5f, type: 3}
+    levelSkill: 0
+    timeDelaySkill:
+    - 1
+    - 5
+    - 5
     isCoinAndDiamond: 1
     isOwn: 1

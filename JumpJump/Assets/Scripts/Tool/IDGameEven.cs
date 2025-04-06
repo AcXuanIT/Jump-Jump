@@ -15,6 +15,8 @@ public enum IDGameEven
     SpawnCoin,
     SpawnDiamond,
     Save,
+    Skill,
+    UpSkillUI,
 }
 
     

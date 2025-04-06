@@ -40,12 +40,16 @@ public class SelectManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textDiamond;
     private void Awake()
     {
-        this.indexPlayer = 0;
-        this.indexSelect = PlayerPrefs.GetInt("IndexPlayer", 0);
-        UpTextInfo();
         this.coins = PlayerPrefs.GetInt("Coins", 0);
         this.diamonds = PlayerPrefs.GetInt("Diamonds", 0);
         UpText();
+
+        //Player
+        this.indexPlayer = PlayerPrefs.GetInt("IndexSelect", 0);
+        this.indexSelect = PlayerPrefs.GetInt("IndexSelect", 0);
+        UpdatePlayer();
+        UpTextInfo();
+        UpSkill();
     }
     private void Start()
     {
@@ -59,12 +63,14 @@ public class SelectManager : MonoBehaviour
             UpIndexPlayer(-1);
             UpdatePlayer();
             UpTextInfo();
+            UpSkill();
         });
         btnRight.onClick.AddListener(delegate
         {
             UpIndexPlayer(1);
             UpdatePlayer();
             UpTextInfo();
+            UpSkill();
         });
         btnSelect.onClick.AddListener(delegate
         {
@@ -72,8 +78,7 @@ public class SelectManager : MonoBehaviour
         });
         btnPlay.onClick.AddListener(delegate
         {
-
-            PlayerPrefs.SetInt("IndexPlayer", indexPlayer);
+            PlayerPrefs.SetInt("IndexSelect", indexSelect);
             SceneManager.LoadSceneAsync("Game");
         });
     }
@@ -174,5 +179,10 @@ public class SelectManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void UpSkill()
+    {
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.UpSkillUI, indexPlayer);
     }
 }

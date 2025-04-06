@@ -16,6 +16,9 @@ public class CharacterInfo
     public RuntimeAnimatorController animationGame;
     public int price;
     public Sprite backGround;
+    public Sprite skillSprite;
+    public int levelSkill;
+    public List<float> timeDelaySkill;
     [Header("True-Coin | False-Diamond")]
     public bool isCoinAndDiamond;  // true = coins --- false = diamond
     public bool isOwn;
