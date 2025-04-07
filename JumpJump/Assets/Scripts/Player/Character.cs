@@ -17,6 +17,8 @@ public class CharacterInfo
     public int price;
     public Sprite backGround;
     public Sprite skillSprite;
+    public List<int> priceUpSkill;
+    public string textSkillInfo;
     public int levelSkill;
     public List<float> timeDelaySkill;
     [Header("True-Coin | False-Diamond")]

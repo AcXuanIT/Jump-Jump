@@ -17,6 +17,8 @@ public enum IDGameEven
     Save,
     Skill,
     UpSkillUI,
+    Skill2,
+
 }
 
     

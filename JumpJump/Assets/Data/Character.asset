@@ -18,6 +18,9 @@ MonoBehaviour:
     price: 1
     backGround: {fileID: 21300000, guid: 108b4a59f0db0f246b94cdef4f4d7f72, type: 3}
     skillSprite: {fileID: 21300000, guid: 1a35245d41de1054b875260896ce4026, type: 3}
+    priceUpSkill: 020000006300000003000000
+    textSkillInfo: "Ng\u01B0\u1EDDi ch\u01A1i c\xF3 kh\u1EA3 n\u0103ng nh\u1EADn
+      x2 v\u1EADt ph\u1EA9m khi nh\u1EB7t.    15%/25%/40%"
     levelSkill: 0
     timeDelaySkill:
     - 10
@@ -30,6 +33,9 @@ MonoBehaviour:
     price: 1212
     backGround: {fileID: 21300000, guid: 8d1ec99e578e11b48bc748522c2f3c39, type: 3}
     skillSprite: {fileID: 21300000, guid: 1492cb956994c89499ce81b76bec8236, type: 3}
+    priceUpSkill: 010000000200000003000000
+    textSkillInfo: "Khi k\xEDch ho\u1EA1t skill, ng\u01B0\u1EDDi ch\u01A1i \u0111c
+      nh\u1EA3y th\xEAm 1 l\u1EA7n n\u1EEFa. Th\u1EDDi gian ch\u1EDD 10s/7s/4s."
     levelSkill: 0
     timeDelaySkill:
     - 15
@@ -42,7 +48,10 @@ MonoBehaviour:
     price: 9999
     backGround: {fileID: 21300000, guid: 97a19f11dae88de4aba6dd97be087c6b, type: 3}
     skillSprite: {fileID: 21300000, guid: 86b5327c14699e6428d3c129f744b65f, type: 3}
-    levelSkill: 0
+    priceUpSkill: 010000000200000003000000
+    textSkillInfo: "Khi kh\xEDch ho\u1EA1t ng\u01B0\u1EDDi ch\u01A1i nh\u1EADn th\xEAm
+      1 l\u01B0\u1EE3ng m\xE1u nh\u1EA5t \u0111\u1ECBnh . 1/2/3"
+    levelSkill: 2
     timeDelaySkill:
     - 8
     - 5
@@ -54,7 +63,10 @@ MonoBehaviour:
     price: 1
     backGround: {fileID: 21300000, guid: 442ea958d8bf54d4c8985ace70dd4512, type: 3}
     skillSprite: {fileID: 21300000, guid: 8196c4d2779060a479192858ac75fa8e, type: 3}
-    levelSkill: 0
+    priceUpSkill: 010000000200000003000000
+    textSkillInfo: "K\xEDch ho\u1EA1t l\xE0m th\u1EDDi gian ch\u1EADm \u0111i 1 n\u1EEDa.  
+      20s/15s/8s."
+    levelSkill: 1
     timeDelaySkill:
     - 14
     - 9
@@ -66,7 +78,10 @@ MonoBehaviour:
     price: 1
     backGround: {fileID: 21300000, guid: d9de4082de9d4a74ebce61c1fe5d6b56, type: 3}
     skillSprite: {fileID: 21300000, guid: dc7a092b09feac44d97bf240db74ae5f, type: 3}
-    levelSkill: 0
+    priceUpSkill: 010000000200000003000000
+    textSkillInfo: "D\u1ECBch chuy\u1EC3n \u0111\u1EBFn n\u01A1i c\xF3 v\u1ECB tr\xED
+      cao nh\u1EA5t. 20s/14s/7s."
+    levelSkill: 1
     timeDelaySkill:
     - 1
     - 5

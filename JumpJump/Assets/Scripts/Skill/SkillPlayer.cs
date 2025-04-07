@@ -34,33 +34,33 @@ public class SkillPlayer : MonoBehaviour
 
     public void Skill01()
     {
-        //Debug.Log("1");
-
     }
     public void Skill02()
     {
-        Debug.Log("2");
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.Skill2, null);
     }
     public void Skill03()
     {
-        Debug.Log("3");
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, -(GameController.Instance.Data.characterInfos[2].levelSkill));
     }
     public void Skill04()
     {
-        Debug.Log("4");
-        StartCoroutine("EditSpeed", 2);
-
+        StartCoroutine("EditSpeed", 4);
     }
     public void Skill05()
     {
-        //Debug.Log("5");
         if (SkillController.Instance.Plank == null) return;
         transform.position = SkillController.Instance.Plank.transform.GetChild(0).transform.position;
     }
 
     IEnumerator EditSpeed(float time)
     {
+        GameController.Instance.SpeedGame /= 2;
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.TimeDelay, 0.5f);
+
         yield return new WaitForSeconds(time);
 
+        GameController.Instance.SpeedGame *= 2;
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.TimeDelay, 2f);
     }
 }

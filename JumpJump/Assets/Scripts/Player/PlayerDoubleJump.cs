@@ -16,6 +16,7 @@ public class PlayerDoubleJump : MonoBehaviour
     {
         this.rd = GetComponent<Rigidbody2D>();
         this.animatorPlayer = GetComponent<Animator>();
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.Skill2, TrueDoubleJump);
     }
     private void Update()
     {
@@ -70,5 +71,10 @@ public class PlayerDoubleJump : MonoBehaviour
             this.isDoubleJump = false;
             animatorPlayer.SetBool("isJumping", false);
         }
+    }
+
+    public void TrueDoubleJump(object obj)
+    {
+        this.isDoubleJump = true;
     }
 }

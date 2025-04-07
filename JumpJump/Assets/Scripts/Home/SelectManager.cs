@@ -47,6 +47,8 @@ public class SelectManager : MonoBehaviour
         //Player
         this.indexPlayer = PlayerPrefs.GetInt("IndexSelect", 0);
         this.indexSelect = PlayerPrefs.GetInt("IndexSelect", 0);
+        SkillController.Instance.IndexPlayer = indexPlayer;
+
         UpdatePlayer();
         UpTextInfo();
         UpSkill();
@@ -101,6 +103,7 @@ public class SelectManager : MonoBehaviour
         {
             indexPlayer += x;
         }
+        SkillController.Instance.IndexPlayer = indexPlayer;
     }
     public void UpdatePlayer()
     {

@@ -58,6 +58,7 @@ public class GameController : Singleton<GameController>
     public float SpeedGame
     {
         get => this.speedGame;
+        set => this.speedGame = value;
     }
     //plank
     public int Planks
