@@ -12,6 +12,7 @@ public class UINotHaveCoins : MonoBehaviour
     {
         btnBack.onClick.AddListener(delegate
         {
+            SoundHome.Instance.PlaySound();
             menuNotHaveCoins.SetActive(false);
         });
     }

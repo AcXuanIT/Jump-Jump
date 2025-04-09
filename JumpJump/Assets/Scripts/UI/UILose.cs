@@ -13,14 +13,26 @@ public class UILose : MonoBehaviour
 
     private void Start()
     {
-        textLose.text = "Your Score : " + GameController.Instance.Score;
+        textLose.text = "Your Score  " +'\n'+ GameController.Instance.Score;
         btnAgain.onClick.AddListener(delegate
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
+            StartCoroutine(DelayAgainGame(0.05f));
         });
         btnHome.onClick.AddListener(delegate
         {
-            SceneManager.LoadSceneAsync("Home");
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
+            StartCoroutine(DelayBackHome(0.05f));
         });
+    }
+    private IEnumerator DelayAgainGame(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    private IEnumerator DelayBackHome(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        SceneManager.LoadSceneAsync("Home");
     }
 }

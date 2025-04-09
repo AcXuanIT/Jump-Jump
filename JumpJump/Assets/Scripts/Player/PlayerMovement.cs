@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameController.Instance.Mode != ModeGame.Play) return;
 
+        this.GetAxits();
         this.Movement();
     }
 
@@ -32,40 +33,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement()
     {
-        GetAxits();
-
-        if (pressHorizontal > 0)
+        if (pressHorizontal != 0)
         {
-            if (this.maxX <= transform.position.x)
+            if ((pressHorizontal > 0 && transform.position.x >= maxX) ||
+                (pressHorizontal < 0 && transform.position.x <= minX))
             {
                 rd.velocity = new Vector2(0, rd.velocity.y);
                 return;
             }
-
-            this.Move();
-            rd.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (pressHorizontal < 0)
-        {
-            if (this.minX >= transform.position.x)
-            {
-                rd.velocity = new Vector2(0, rd.velocity.y);
-                return;
-            }
-
-            this.Move();
-            rd.transform.localScale = new Vector3(-1, 1, 1);
+            Move();
+            FlipSprite();
         }
         else
         {
             rd.velocity = new Vector2(0, rd.velocity.y);
         }
-        this.checkSound();
+        CheckSound();
     }
 
     public void Move()
     {
-        rd.velocity = new Vector2(speed * this.pressHorizontal * Time.deltaTime, rd.velocity.y);
+        rd.velocity = new Vector2(speed * this.pressHorizontal, rd.velocity.y);
         this.AnimatorMovement();
     } 
 
@@ -73,12 +61,20 @@ public class PlayerMovement : MonoBehaviour
     {
         animationPlayer.SetFloat("xVelocity", Mathf.Abs(rd.velocity.x));
     }
-    public void checkSound()
+    public void CheckSound()
     {
         if (this.pressHorizontal != 0 && isGround)
             SoundManager.Instance.PlaySoundRun();
         else
             SoundManager.Instance.StopSoundRun();
+    }
+    public void FlipSprite()
+    {
+        Vector3 scale = transform.localScale;
+        if (pressHorizontal > 0 && scale.x < 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (pressHorizontal < 0 && scale.x > 0)
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

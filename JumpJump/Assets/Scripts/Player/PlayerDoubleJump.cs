@@ -41,7 +41,6 @@ public class PlayerDoubleJump : MonoBehaviour
             else if(isDoubleJump)
             {
                 this.Jump();
-                animatorPlayer.SetBool("isJumping", false);
                 this.isDoubleJump = false;
                 animatorPlayer.SetBool("isJumping", true);
             }
@@ -51,6 +50,7 @@ public class PlayerDoubleJump : MonoBehaviour
     public void Jump()
     {
         SoundManager.Instance.PlaySound(SoundManager.Instance.audioJump);
+        this.rd.velocity = new Vector2(rd.velocity.x, 0);
         this.rd.velocity = new Vector2(rd.velocity.x, this.jumpForce);
     }
     public void checkPosition()

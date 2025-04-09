@@ -75,7 +75,7 @@ public class UIHeart : MonoBehaviour
     {
         if (GameController.Instance.Heart == 0)
         {
-            GameController.Instance.Mode = ModeGame.EndGame;
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioPlayerDead);
             GameController.Instance.EndGame();
         }
     }

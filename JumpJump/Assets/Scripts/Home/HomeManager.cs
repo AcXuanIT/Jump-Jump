@@ -23,19 +23,23 @@ public class HomeManager : MonoBehaviour
     {
         btnPlay.onClick.AddListener(delegate
         {
+            SoundHome.Instance.PlaySound();
             this.pannelHome.SetActive(false);
             this.pannelSelect.SetActive(true);
         });
         btnRankScore.onClick.AddListener(delegate
         {
+            SoundHome.Instance.PlaySound();
             menuRank.SetActive(true);
         });
         btnExit.onClick.AddListener(delegate
         {
+            SoundHome.Instance.PlaySound();
             Application.Quit();
         });
         btnSetting.onClick.AddListener(delegate
         {
+            SoundHome.Instance.PlaySound();
             menuSetting.SetActive(true);
         });
     }

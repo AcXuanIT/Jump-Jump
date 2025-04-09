@@ -41,11 +41,11 @@ public class SkillPlayer : MonoBehaviour
     }
     public void Skill03()
     {
-        ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, -(GameController.Instance.Data.characterInfos[2].levelSkill));
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, -1);
     }
     public void Skill04()
     {
-        StartCoroutine("EditSpeed", 4);
+        StartCoroutine(EditSpeed(4f));
     }
     public void Skill05()
     {

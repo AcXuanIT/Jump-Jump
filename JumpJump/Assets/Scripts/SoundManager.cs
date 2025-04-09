@@ -7,7 +7,11 @@ public class SoundManager : Singleton<SoundManager>
 {
     [Header("AudioClip")]
     [SerializeField] public AudioClip audioJump;
-    [SerializeField] public AudioClip audioCoins;
+    [SerializeField] public AudioClip audioPickCoin;
+    [SerializeField] public AudioClip audioPickDiamond;
+    [SerializeField] public AudioClip audioClickButton;
+    [SerializeField] public AudioClip audioPlayerFallOutMap;
+    [SerializeField] public AudioClip audioPlayerDead;
 
     [Space]
     [Header("AudioSource")]

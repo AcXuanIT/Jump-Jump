@@ -15,10 +15,10 @@ public class SelectManager : MonoBehaviour
     [SerializeField] private Button btnPlay;
 
     [Space]
-    [Header("Pannel")]
+    [Header("Panel")]
     [SerializeField] private GameObject panelNotHaveCoins;
-    [SerializeField] private GameObject pannelSelect;
-    [SerializeField] private GameObject pannelHome;
+    [SerializeField] private GameObject panelSelect;
+    [SerializeField] private GameObject panelHome;
     [SerializeField] private Image BackGround;
 
     [Space]
@@ -26,8 +26,8 @@ public class SelectManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Character characters;
     [SerializeField] private TextMeshProUGUI textInfoOwn;
-    private int indexSelect;
-    private int indexPlayer;
+    private int indexSelect; 
+    private int indexPlayer; 
     [SerializeField] private Sprite coin;
     [SerializeField] private Sprite diamond;
     [SerializeField] private Image item;
@@ -38,51 +38,47 @@ public class SelectManager : MonoBehaviour
     private int diamonds;
     [SerializeField] private TextMeshProUGUI textCoin;
     [SerializeField] private TextMeshProUGUI textDiamond;
+
     private void Awake()
     {
         this.coins = PlayerPrefs.GetInt("Coins", 0);
         this.diamonds = PlayerPrefs.GetInt("Diamonds", 0);
-        UpText();
-
-        //Player
         this.indexPlayer = PlayerPrefs.GetInt("IndexSelect", 0);
         this.indexSelect = PlayerPrefs.GetInt("IndexSelect", 0);
         SkillController.Instance.IndexPlayer = indexPlayer;
 
+        UpText();
         UpdatePlayer();
         UpTextInfo();
         UpSkill();
     }
     private void Start()
     {
-        btnBackHome.onClick.AddListener(delegate
-        {
-            this.pannelHome.SetActive(true);
-            this.pannelSelect.SetActive(false);
-        });
-        btnLeft.onClick.AddListener(delegate
-        {
-            UpIndexPlayer(-1);
-            UpdatePlayer();
-            UpTextInfo();
-            UpSkill();
-        });
-        btnRight.onClick.AddListener(delegate
-        {
-            UpIndexPlayer(1);
-            UpdatePlayer();
-            UpTextInfo();
-            UpSkill();
-        });
-        btnSelect.onClick.AddListener(delegate
-        {
-            ClickSelect();
-        });
-        btnPlay.onClick.AddListener(delegate
-        {
-            PlayerPrefs.SetInt("IndexSelect", indexSelect);
-            SceneManager.LoadSceneAsync("Game");
-        });
+        btnBackHome.onClick.AddListener(() => this.OnClickBackHome());
+        btnLeft.onClick.AddListener(() => this.ChangeCharacter(-1));
+        btnRight.onClick.AddListener(() => this.ChangeCharacter(1));
+        btnSelect.onClick.AddListener(() => this.OnClickSelect());
+        btnPlay.onClick.AddListener(() => this.OnClickPlay());
+    }
+    public void OnClickBackHome()
+    {
+        SoundHome.Instance.PlaySound();
+        this.panelHome.SetActive(true);
+        this.panelSelect.SetActive(false);
+    }
+    public void ChangeCharacter(int x)
+    {
+        SoundHome.Instance.PlaySound();
+        UpIndexPlayer(x);
+        UpdatePlayer();
+        UpTextInfo();
+        UpSkill();
+    }
+    public void OnClickPlay()
+    {
+        SoundHome.Instance.PlaySound();
+        PlayerPrefs.SetInt("IndexSelect", indexSelect);
+        SceneManager.LoadSceneAsync("Game");
     }
     public void UpText()
     {
@@ -139,8 +135,9 @@ public class SelectManager : MonoBehaviour
             }
         }
     }
-    public void ClickSelect()
+    public void OnClickSelect()
     {
+        SoundHome.Instance.PlaySound();
         if (characters.characterInfos[indexPlayer].isOwn)
         {
             this.indexSelect = indexPlayer;

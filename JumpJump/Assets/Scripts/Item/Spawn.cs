@@ -13,14 +13,20 @@ public class Spawn : MonoBehaviour
     }
     public void SpawnCoin(object parent)
     {
-        GameObject obj = (GameObject)parent;
-        GameObject newCoin = Instantiate(coinPrefabs, obj.transform.GetChild(0).transform.position, Quaternion.identity, obj.transform.GetChild(0).transform);
+        SpawnItem(coinPrefabs, parent);
     }
 
     public void SpawnDiamond(object parent)
     {
-        GameObject obj = (GameObject)parent;
-        GameObject newDiamond = Instantiate(diamondPrefabs, obj.transform.GetChild(0).transform.position, Quaternion.identity, obj.transform.GetChild(0).transform);
+        SpawnItem(diamondPrefabs, parent);
+    }
+
+    private void SpawnItem(GameObject prefab, object parent)
+    {
+        if (parent is not GameObject obj || obj.transform.childCount == 0) return;
+
+        Transform spawnPoint = obj.transform.GetChild(0);
+        Instantiate(prefab, spawnPoint.position, Quaternion.identity, spawnPoint);
     }
 }
 

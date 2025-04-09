@@ -21,7 +21,7 @@ MonoBehaviour:
     priceUpSkill: 020000006300000003000000
     textSkillInfo: "Ng\u01B0\u1EDDi ch\u01A1i c\xF3 kh\u1EA3 n\u0103ng nh\u1EADn
       x2 v\u1EADt ph\u1EA9m khi nh\u1EB7t.    15%/25%/40%"
-    levelSkill: 0
+    levelSkill: 3
     timeDelaySkill:
     - 10
     - 7
@@ -38,9 +38,9 @@ MonoBehaviour:
       nh\u1EA3y th\xEAm 1 l\u1EA7n n\u1EEFa. Th\u1EDDi gian ch\u1EDD 10s/7s/4s."
     levelSkill: 0
     timeDelaySkill:
-    - 15
-    - 11
-    - 6
+    - 10
+    - 7
+    - 4
     isCoinAndDiamond: 0
     isOwn: 1
   - animationHome: {fileID: 9100000, guid: 88ce543b0666c0a479bda89e4b6e621e, type: 2}
@@ -50,12 +50,12 @@ MonoBehaviour:
     skillSprite: {fileID: 21300000, guid: 86b5327c14699e6428d3c129f744b65f, type: 3}
     priceUpSkill: 010000000200000003000000
     textSkillInfo: "Khi kh\xEDch ho\u1EA1t ng\u01B0\u1EDDi ch\u01A1i nh\u1EADn th\xEAm
-      1 l\u01B0\u1EE3ng m\xE1u nh\u1EA5t \u0111\u1ECBnh . 1/2/3"
+      1 m\xE1u nh\u1EA5t \u0111\u1ECBnh . 60/45/40s"
     levelSkill: 2
     timeDelaySkill:
-    - 8
-    - 5
-    - 3
+    - 60
+    - 45
+    - 40
     isCoinAndDiamond: 1
     isOwn: 1
   - animationHome: {fileID: 9100000, guid: e51e68da061e149469fbb9541cda10ab, type: 2}
@@ -64,13 +64,13 @@ MonoBehaviour:
     backGround: {fileID: 21300000, guid: 442ea958d8bf54d4c8985ace70dd4512, type: 3}
     skillSprite: {fileID: 21300000, guid: 8196c4d2779060a479192858ac75fa8e, type: 3}
     priceUpSkill: 010000000200000003000000
-    textSkillInfo: "K\xEDch ho\u1EA1t l\xE0m th\u1EDDi gian ch\u1EADm \u0111i 1 n\u1EEDa.  
-      20s/15s/8s."
+    textSkillInfo: "K\xEDch ho\u1EA1t l\xE0m th\u1EDDi gian ch\u1EADm \u0111i 1 n\u1EEDa
+      trong 4s.   20s/15s/8s."
     levelSkill: 1
     timeDelaySkill:
-    - 14
-    - 9
-    - 4
+    - 20
+    - 15
+    - 8
     isCoinAndDiamond: 1
     isOwn: 1
   - animationHome: {fileID: 9100000, guid: 8a678159c2b849b4a88f9ac5424d07a8, type: 2}
@@ -81,10 +81,10 @@ MonoBehaviour:
     priceUpSkill: 010000000200000003000000
     textSkillInfo: "D\u1ECBch chuy\u1EC3n \u0111\u1EBFn n\u01A1i c\xF3 v\u1ECB tr\xED
       cao nh\u1EA5t. 20s/14s/7s."
-    levelSkill: 1
+    levelSkill: 3
     timeDelaySkill:
-    - 1
-    - 5
-    - 5
+    - 20
+    - 14
+    - 7
     isCoinAndDiamond: 1
     isOwn: 1

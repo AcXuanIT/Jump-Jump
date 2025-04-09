@@ -26,13 +26,17 @@ public class SpawnItem : MonoBehaviour
         this.randomNext = Random.Range(6, 11);
         this.SpawnStart();
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.TimeDelay, UpTimeDelay);
-        //ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.StartSpawn, SpawnStart);
+    
     }
     private void Update()
     {
         if (GameController.Instance.Mode != ModeGame.Play) return;
 
         Spawn();
+    }
+    private void OnDestroy()
+    {
+        ObserverManager<IDGameEven>.RemoveAddListener(IDGameEven.TimeDelay, UpTimeDelay);
     }
     public void SpawnStart()
     {
@@ -70,21 +74,22 @@ public class SpawnItem : MonoBehaviour
 
     public void checkPlank(GameObject obj)
     {
-        if(obj.CompareTag("Plank"))
+        if(obj.TryGetComponent<Plank>(out var plank))
         {
             GameController.Instance.Planks++;
 
             if(GameController.Instance.Planks >= GameController.Instance.PlanksLate + randomNext)
             {
-                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnCoin, obj);
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnCoin, plank);
                 GameController.Instance.Coins++;
                 GameController.Instance.PlanksLate += randomNext;
-                this.randomNext = Random.Range(6, 11);
+                this.randomNext = Random.Range(4, 8);
+                return;
             }
             else if(GameController.Instance.Coins >= GameController.Instance.CoinsLate + 5)
             {
                 GameController.Instance.CoinsLate += 5;
-                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnDiamond, obj);
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnDiamond, plank);
             }
         }    
     }

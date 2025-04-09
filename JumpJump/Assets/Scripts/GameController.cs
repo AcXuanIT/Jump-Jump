@@ -34,12 +34,18 @@ public class GameController : Singleton<GameController>
     [Space]
     [Header("Lose")]
     [SerializeField] private UILose uiLose;
+
+    [Space]
+    [Header("MaxValue")]
+    [SerializeField]private float maxSpeed;
+
     private void Start()
     { 
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpScore, UpdateScore);
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpCoin, UpdateCoin);
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.UpDiamond, UpdateDiamond);
-        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.Save, SaveCoinsAndDiamonds);
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.SaveCoisAndDiamonds, SaveCoinsAndDiamonds);
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.SaveScore, SaveHighScore);
 
         this.coinGame = PlayerPrefs.GetInt("Coins", 0);
         this.diamondGame = PlayerPrefs.GetInt("Diamonds", 0);
@@ -48,19 +54,19 @@ public class GameController : Singleton<GameController>
     }
     private void Update()
     {
+        if (Mode != ModeGame.Play) return;
+
         this.UpSpeed();
     }
     private void OnDisable()
     {
         ObserverManager<IDGameEven>.RemoveAll();
     }
-    //speed
     public float SpeedGame
     {
         get => this.speedGame;
         set => this.speedGame = value;
     }
-    //plank
     public int Planks
     {
         get => this.planks;
@@ -71,7 +77,6 @@ public class GameController : Singleton<GameController>
         get => this.plankslate;
         set => this.plankslate = value;
     }
-    //coin
     public int Coins
     {
         get => this.coins;
@@ -82,13 +87,11 @@ public class GameController : Singleton<GameController>
         get => this.coinslate;
         set => this.coinslate = value;
     }
-    //modeGame
     public ModeGame Mode
     {
         get => modeGame;
         set => modeGame = value;
     }
-    //Item
     public int CoinGame
     {
         get => this.coinGame;
@@ -115,6 +118,8 @@ public class GameController : Singleton<GameController>
     }
     public void UpSpeed()
     {
+        if (this.speedGame >= this.maxSpeed) return;
+
         if(scoreGame >= lastScore + 50)
         {
             float x = 1f + (scoreGame)*1f / 1000;
@@ -139,34 +144,40 @@ public class GameController : Singleton<GameController>
         this.diamondGame += (int)obj;
         ObserverManager<IDGameEven>.PostEven(IDGameEven.UpDiamondText, this.diamondGame);
     }
-
     public void PauseGame()
     {
         Time.timeScale = 0;
         modeGame = ModeGame.Pause;
     }
-
     public void ContinueGame()
     {
         Time.timeScale = 1;
         modeGame = ModeGame.Play;
     }
 
-
     public void EndGame()
     {
+        Mode = ModeGame.EndGame;
+        this.SaveHighScore();
         uiLose.gameObject.SetActive(true);
         this.SaveCoinsAndDiamonds();
     }
     public void AgainGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         this.SaveCoinsAndDiamonds();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SaveCoinsAndDiamonds(object obj=null)
     {
         PlayerPrefs.SetInt("Coins", this.coinGame);
         PlayerPrefs.SetInt("Diamonds", this.diamondGame);
+        PlayerPrefs.Save();
+    }
+
+    public void SaveHighScore(object obj = null)
+    {
+        PlayerPrefs.SetInt("HighScore", this.scoreGame);
+        PlayerPrefs.Save();
     }
 }

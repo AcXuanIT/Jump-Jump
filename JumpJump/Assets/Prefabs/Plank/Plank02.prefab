@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desY: -9
-  yPostranfer: 3.5
+  yPostranfer: 4
 --- !u!50 &2688910512557105931
 Rigidbody2D:
   serializedVersion: 4

@@ -22,6 +22,6 @@ public class CharacterInfo
     public int levelSkill;
     public List<float> timeDelaySkill;
     [Header("True-Coin | False-Diamond")]
-    public bool isCoinAndDiamond;  // true = coins --- false = diamond
+    public bool isCoinAndDiamond; 
     public bool isOwn;
 }

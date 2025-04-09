@@ -17,19 +17,34 @@ public class UISetting : MonoBehaviour
     {
         btnHome.onClick.AddListener(delegate
         {
-            Time.timeScale = 1;
-            ObserverManager<IDGameEven>.PostEven(IDGameEven.Save);
-            SceneManager.LoadSceneAsync("Home");
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
+            StartCoroutine(DelayBackHome(0.05f));
         });
         btnContinue.onClick.AddListener(delegate
         {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
             menuSetting.SetActive(false);
             GameController.Instance.ContinueGame();
         });
         btnAgain.onClick.AddListener(delegate
         {
-            Time.timeScale = 1;
-            GameController.Instance.AgainGame();
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
+            StartCoroutine(DelayAgainGame(0.05f));
         });
+    }
+
+    private IEnumerator DelayBackHome(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        Time.timeScale = 1;
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.SaveCoisAndDiamonds);
+        ObserverManager<IDGameEven>.PostEven(IDGameEven.SaveScore);
+        SceneManager.LoadSceneAsync("Home");
+    }
+    private IEnumerator DelayAgainGame(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        Time.timeScale = 1;
+        GameController.Instance.AgainGame();
     }
 }

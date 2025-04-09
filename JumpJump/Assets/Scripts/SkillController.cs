@@ -28,17 +28,21 @@ public class SkillController : Singleton<SkillController>
     {
         if (!isSkill01) return;
 
+        if (GameController.Instance.Data.characterInfos[0].levelSkill == 0) return;
+
         float value = Random.value;
 
-        if (value <= ratioSkill01[GameController.Instance.Data.characterInfos[0].levelSkill])
+        if (value <= ratioSkill01[GameController.Instance.Data.characterInfos[0].levelSkill - 1])
         {
             if(obj.CompareTag("Coin"))
             {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.audioPickCoin);
                 ObserverManager<IDGameEven>.PostEven(IDGameEven.UpScore, 10);
                 ObserverManager<IDGameEven>.PostEven(IDGameEven.UpCoin, 1);
             }
             else if(obj.CompareTag("Diamond"))
             {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.audioPickDiamond);
                 ObserverManager<IDGameEven>.PostEven(IDGameEven.UpScore, 100);
                 ObserverManager<IDGameEven>.PostEven(IDGameEven.UpDiamond, 1);
             }

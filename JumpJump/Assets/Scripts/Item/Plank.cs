@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Plank : MonoBehaviour
 {
-    private Rigidbody2D rd;
     [SerializeField] private float desY;
     [SerializeField] private float yPostranfer;
+    private Rigidbody2D rd;
     private bool isNew;
-    
+    private bool hasPushedToSkill;
+
     public bool IsNew
     {
         get => isNew;
@@ -22,8 +24,6 @@ public class Plank : MonoBehaviour
 
     private void Update()
     {
-        Down();
-
         checkPosSkill();
 
         if(checkDestroy())
@@ -31,10 +31,13 @@ public class Plank : MonoBehaviour
             DestroyPlank();
         }
     }
-
+    private void FixedUpdate()
+    {
+        Down();
+    }
     public void Down()
     {
-        rd.velocity = Time.deltaTime * GameController.Instance.SpeedGame * Vector2.down;
+        rd.velocity = GameController.Instance.SpeedGame * Vector2.down;
     }
     public bool checkDestroy()
     {
@@ -44,12 +47,12 @@ public class Plank : MonoBehaviour
     {
         PoolingManager.Destroy(gameObject);
     }
-
     public void checkPosSkill()
     {
-        if (gameObject.transform.position.y <= yPostranfer)
+        if (!hasPushedToSkill && gameObject.transform.position.y <= yPostranfer)
         {
-            this.PushPlank(gameObject.GetComponent<Plank>());
+            this.hasPushedToSkill = true;
+            this.PushPlank(this);
         }
     }
     public void PushPlank(Plank plank)

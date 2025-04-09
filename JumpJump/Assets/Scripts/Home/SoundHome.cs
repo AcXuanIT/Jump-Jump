@@ -3,24 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundHome : MonoBehaviour
+public class SoundHome : Singleton<SoundHome>
 {
+    [Header("Slider")]
     [SerializeField] private Slider slider;
+
+    [Space]
+    [Header("AudioSource")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource soundSFX;
+
+    [Space]
+    [Header("AudioClip")]
+    [SerializeField] private AudioClip soundClickButton;
 
     private void Start()
     {
-        audioSource.volume = PlayerPrefs.GetFloat("VolumeHome", 1);
-        slider.value = PlayerPrefs.GetFloat("VolumeHome", 1);
+        float savedVolume = PlayerPrefs.GetFloat("VolumeHome", 1f);
+        audioSource.volume = savedVolume;
 
+        slider.value = savedVolume;
         slider.onValueChanged.AddListener(SetVolume);
     }
 
     public void SetVolume(float volume)
     {
-        PlayerPrefs.SetFloat("VolumeHome",volume);
-        PlayerPrefs.Save();
         audioSource.volume = volume;
-        slider.value = volume;
+        PlayerPrefs.SetFloat("VolumeHome", volume);
+        PlayerPrefs.Save();
+    }
+    public void PlaySound()
+    {
+        this.soundSFX.PlayOneShot(this.soundClickButton);
     }
 }

@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     {
         btnSetting.onClick.AddListener(delegate
         {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
             GameController.Instance.PauseGame();
             menuSetting.SetActive(true);
         });

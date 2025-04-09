@@ -14,24 +14,24 @@ public class Window : MonoBehaviour
 
     private void Update()
     {
-
-        Down();
-
         if (checkDestroy())
         {
-            DestroyPlank();
+            DestroyWindow();
         }
     }
-
+    private void FixedUpdate()
+    {
+        Down();
+    }
     public void Down()
     {
-        rd.velocity = Time.deltaTime * GameController.Instance.SpeedGame * Vector2.down;
+        rd.velocity = GameController.Instance.SpeedGame * Vector2.down;
     }
     public bool checkDestroy()
     {
         return transform.position.y <= this.desY;
     }
-    public void DestroyPlank()
+    public void DestroyWindow()
     {
         PoolingManager.Destroy(gameObject);
     }
