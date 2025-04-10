@@ -19,6 +19,8 @@ public enum IDGameEven
     //Spawn
     SpawnCoin,
     SpawnDiamond,
+    SpawnBomb,
+    SpawnEffect,
 
     //Save
     SaveCoisAndDiamonds,

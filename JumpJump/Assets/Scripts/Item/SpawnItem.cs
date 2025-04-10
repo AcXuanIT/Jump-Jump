@@ -8,6 +8,7 @@ public class SpawnItem : MonoBehaviour
     [Header("Object")]
     [SerializeField] private List<GameObject> objectPrefabs;
     [SerializeField] private Transform spawnObject;
+    [SerializeField] private GameObject plankOld;
     [SerializeField] private List<Vector3> listPositionObjectStart;
 
     [Header("Time")]
@@ -43,13 +44,15 @@ public class SpawnItem : MonoBehaviour
         for (int i = 0; i < listPositionObjectStart.Count; i++)
         {
             GameObject newObj = PoolingManager.Spawn(objectPrefabs[0], listPositionObjectStart[i], Quaternion.identity, spawnObject);
+            this.plankOld = newObj;
             checkPlank(newObj);
         }
     }
     public Vector3 RandomPosition()
     {
         float randomX = Random.Range(minXrandom, maxXrandom);
-        return new Vector3(randomX, Yconst, 0);
+        float value = Random.Range(0, 2) == 0 ? 6 : 8;
+        return new Vector3(randomX, value, 0);
     }
     public int RandomPrefabs()
     {
@@ -59,11 +62,13 @@ public class SpawnItem : MonoBehaviour
     {
         if (GameController.Instance.Mode != ModeGame.Play) return;
 
-        timeSpawn += Time.deltaTime;
+        /*timeSpawn += Time.deltaTime;
         if (timeSpawn < timeDelay) return;
-        timeSpawn = 0;
+        timeSpawn = 0;*/
+        if (plankOld.transform.position.y > 4) return;
 
         GameObject newobj = PoolingManager.Spawn(objectPrefabs[RandomPrefabs()], RandomPosition(), Quaternion.identity, spawnObject);
+        this.plankOld = newobj;
         checkPlank(newobj);
     }
 
@@ -80,7 +85,7 @@ public class SpawnItem : MonoBehaviour
 
             if(GameController.Instance.Planks >= GameController.Instance.PlanksLate + randomNext)
             {
-                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnCoin, plank);
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnCoin, plank.gameObject);
                 GameController.Instance.Coins++;
                 GameController.Instance.PlanksLate += randomNext;
                 this.randomNext = Random.Range(4, 8);
@@ -89,8 +94,25 @@ public class SpawnItem : MonoBehaviour
             else if(GameController.Instance.Coins >= GameController.Instance.CoinsLate + 5)
             {
                 GameController.Instance.CoinsLate += 5;
-                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnDiamond, plank);
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnDiamond, plank.gameObject);
+            }
+            else
+            {
+                this.SpawnRandomItem(plank.gameObject);
             }
         }    
+    }
+
+    public void SpawnRandomItem(object plank)
+    {
+        this.SpawnBomb(plank);
+    }
+    public void SpawnBomb(object plank)
+    {
+        float value = Random.value;
+        if(value <= 0.2f)
+        {
+            ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnBomb, plank);
+        }
     }
 }

@@ -32,7 +32,12 @@ public class PlayerController : MonoBehaviour
         {
             ObserverManager<IDGameEven>.PostEven(IDGameEven.Skill, indexSelectPlayer);
             this.isCanUseSkill = false;
-            StartCoroutine("timeDelaySkill", GameController.Instance.Data.characterInfos[indexSelectPlayer].timeDelaySkill[GameController.Instance.Data.characterInfos[indexSelectPlayer].levelSkill-1]);
+
+            if (indexSelectPlayer != 0)
+            {
+                StartCoroutine("timeDelaySkill", GameController.Instance.Data.characterInfos[indexSelectPlayer].timeDelaySkill[GameController.Instance.Data.characterInfos[indexSelectPlayer].levelSkill - 1]);
+                ObserverManager<IDGameEven>.PostEven(IDGameEven.SpawnEffect, indexSelectPlayer);
+            }
         }
     }
     public void Init()

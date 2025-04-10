@@ -6,10 +6,13 @@ public class Spawn : MonoBehaviour
 {
     [SerializeField] private GameObject coinPrefabs;
     [SerializeField] private GameObject diamondPrefabs;
+    [SerializeField] private GameObject bombPrefabs;
+
     private void Awake()
     {
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.SpawnCoin, SpawnCoin);
         ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.SpawnDiamond, SpawnDiamond);
+        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.SpawnBomb, SpawnBomb);
     }
     public void SpawnCoin(object parent)
     {
@@ -19,6 +22,10 @@ public class Spawn : MonoBehaviour
     public void SpawnDiamond(object parent)
     {
         SpawnItem(diamondPrefabs, parent);
+    }
+    public void SpawnBomb(object parent)
+    {
+        SpawnItem(bombPrefabs, parent);
     }
 
     private void SpawnItem(GameObject prefab, object parent)

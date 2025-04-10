@@ -12,15 +12,6 @@ public class Bomb : MonoBehaviour
     {
         this.anim = GetComponent<Animator>();
     }
-
-    private void Update()
-    {
-        if(this.isPlayerInside && this.isBoom)
-        {
-            ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, 1);
-            isBoom = false;
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -29,7 +20,7 @@ public class Bomb : MonoBehaviour
             if (!isBoom)
             {
                 anim.SetBool("isPlayer", true);
-                StartCoroutine(DelayBomb(0.4f));
+                StartCoroutine(DelayBomb(1.15f));
             }
         }
     }
@@ -44,14 +35,19 @@ public class Bomb : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         this.isBoom = true;
-        anim.SetBool("isExplosion", true);
-        StartCoroutine(BomExplosion(0.5f));
+
+        if (this.isPlayerInside && this.isBoom)
+        {
+            ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, 1);
+            isBoom = false;
+        }
+
+        Invoke("Destroy", 1.75f);
     }
 
-    IEnumerator BomExplosion(float time)
+    public void Destroy()
     {
-        yield return new WaitForSeconds(time);
-
         Destroy(gameObject);
     }
+
 }
