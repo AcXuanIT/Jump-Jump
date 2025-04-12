@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,6 @@ public class HomeManager : MonoBehaviour
 {
     [Header("Button")]
     [SerializeField] private Button btnPlay;
-    [SerializeField] private Button btnRankScore;
     [SerializeField] private Button btnExit;
     [SerializeField] private Button btnSetting;
 
@@ -17,29 +17,31 @@ public class HomeManager : MonoBehaviour
     [SerializeField] private GameObject pannelHome;
     [SerializeField] private GameObject pannelSelect;
     [SerializeField] private GameObject menuSetting;
-    [SerializeField] private GameObject menuRank;
 
+    [Space]
+    [Header("Text")]
+    [SerializeField] private TextMeshProUGUI textHighScore;
+
+    private void Awake()
+    {
+        this.textHighScore.text = "High Score:\n" + PlayerPrefs.GetInt("HighScore", 0);
+    }
     private void Start()
     {
         btnPlay.onClick.AddListener(delegate
         {
-            SoundHome.Instance.PlaySound();
+            SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
             this.pannelHome.SetActive(false);
             this.pannelSelect.SetActive(true);
         });
-        btnRankScore.onClick.AddListener(delegate
-        {
-            SoundHome.Instance.PlaySound();
-            menuRank.SetActive(true);
-        });
         btnExit.onClick.AddListener(delegate
         {
-            SoundHome.Instance.PlaySound();
+            SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
             Application.Quit();
         });
         btnSetting.onClick.AddListener(delegate
         {
-            SoundHome.Instance.PlaySound();
+            SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
             menuSetting.SetActive(true);
         });
     }

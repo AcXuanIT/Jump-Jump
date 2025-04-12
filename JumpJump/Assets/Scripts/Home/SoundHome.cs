@@ -6,34 +6,48 @@ using UnityEngine.UI;
 public class SoundHome : Singleton<SoundHome>
 {
     [Header("Slider")]
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider sliderMusic;
+    [SerializeField] private Slider sliderSFX;
 
     [Space]
     [Header("AudioSource")]
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource soundMusic;
     [SerializeField] private AudioSource soundSFX;
 
     [Space]
     [Header("AudioClip")]
-    [SerializeField] private AudioClip soundClickButton;
+    [SerializeField] public AudioClip soundClickButton;
+    [SerializeField] public AudioClip soundUpLevel;
+    [SerializeField] public AudioClip soundBuyPlayer;
 
     private void Start()
     {
-        float savedVolume = PlayerPrefs.GetFloat("VolumeHome", 1f);
-        audioSource.volume = savedVolume;
+        sliderMusic.value = PlayerPrefs.GetFloat("Music", 1);
+        soundMusic.volume = PlayerPrefs.GetFloat("Music", 1);
+        sliderSFX.value = PlayerPrefs.GetFloat("SFX", 1);
+        soundSFX.volume = PlayerPrefs.GetFloat("SFX", 1);
 
-        slider.value = savedVolume;
-        slider.onValueChanged.AddListener(SetVolume);
+        sliderMusic.onValueChanged.AddListener(UpdateVolumeMusic);
+        sliderSFX.onValueChanged.AddListener(UpdateVolumeSFX);
     }
 
-    public void SetVolume(float volume)
+    public void UpdateVolumeMusic(float volume)
     {
-        audioSource.volume = volume;
-        PlayerPrefs.SetFloat("VolumeHome", volume);
+        sliderMusic.value = volume;
+        soundMusic.volume = volume;
+        PlayerPrefs.SetFloat("Music", volume);
         PlayerPrefs.Save();
     }
-    public void PlaySound()
+
+    public void UpdateVolumeSFX(float volume)
     {
-        this.soundSFX.PlayOneShot(this.soundClickButton);
+        sliderSFX.value = volume;
+        soundSFX.volume = volume;
+        PlayerPrefs.SetFloat("SFX", volume);
+        PlayerPrefs.Save();
+    }
+    public void PlaySound(AudioClip audio)
+    {
+        this.soundSFX.PlayOneShot(audio);
     }
 }

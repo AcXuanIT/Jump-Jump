@@ -12,7 +12,7 @@ public class UISettingHome : MonoBehaviour
     {
         btnBack.onClick.AddListener(delegate
         {
-            SoundHome.Instance.PlaySound();
+            SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
             menuSetting.SetActive(false);
         });
     }

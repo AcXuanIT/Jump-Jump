@@ -11,10 +11,6 @@ public class SpawnItem : MonoBehaviour
     [SerializeField] private GameObject plankOld;
     [SerializeField] private List<Vector3> listPositionObjectStart;
 
-    [Header("Time")]
-    private float timeSpawn = 0f;
-    [SerializeField] private float timeDelay;
-
     [Space]
     [Header("Random")]
     [SerializeField] private float minXrandom;
@@ -26,18 +22,12 @@ public class SpawnItem : MonoBehaviour
     {
         this.randomNext = Random.Range(6, 11);
         this.SpawnStart();
-        ObserverManager<IDGameEven>.AddDesgisterEvent(IDGameEven.TimeDelay, UpTimeDelay);
-    
     }
     private void Update()
     {
         if (GameController.Instance.Mode != ModeGame.Play) return;
 
         Spawn();
-    }
-    private void OnDestroy()
-    {
-        ObserverManager<IDGameEven>.RemoveAddListener(IDGameEven.TimeDelay, UpTimeDelay);
     }
     public void SpawnStart()
     {
@@ -62,21 +52,12 @@ public class SpawnItem : MonoBehaviour
     {
         if (GameController.Instance.Mode != ModeGame.Play) return;
 
-        /*timeSpawn += Time.deltaTime;
-        if (timeSpawn < timeDelay) return;
-        timeSpawn = 0;*/
         if (plankOld.transform.position.y > 4) return;
 
         GameObject newobj = PoolingManager.Spawn(objectPrefabs[RandomPrefabs()], RandomPosition(), Quaternion.identity, spawnObject);
         this.plankOld = newobj;
         checkPlank(newobj);
     }
-
-    public void UpTimeDelay(object obj)
-    {
-        this.timeDelay /= (float)obj;
-    }
-
     public void checkPlank(GameObject obj)
     {
         if(obj.TryGetComponent<Plank>(out var plank))

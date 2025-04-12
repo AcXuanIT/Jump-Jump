@@ -14,7 +14,6 @@ public enum IDGameEven
 
     //GamePlay
     Heart,
-    TimeDelay,
 
     //Spawn
     SpawnCoin,

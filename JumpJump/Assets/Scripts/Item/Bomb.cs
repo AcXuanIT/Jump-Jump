@@ -35,7 +35,7 @@ public class Bomb : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         this.isBoom = true;
-
+        SoundManager.Instance.PlaySound(SoundManager.Instance.audioBombExplosion);
         if (this.isPlayerInside && this.isBoom)
         {
             ObserverManager<IDGameEven>.PostEven(IDGameEven.Heart, 1);

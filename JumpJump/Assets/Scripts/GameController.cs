@@ -124,7 +124,6 @@ public class GameController : Singleton<GameController>
         {
             float x = 1f + (scoreGame)*1f / 1000;
             this.speedGame *= x;
-            //ObserverManager<IDGameEven>.PostEven(IDGameEven.TimeDelay, x );
             this.lastScore = scoreGame;
         }
     }

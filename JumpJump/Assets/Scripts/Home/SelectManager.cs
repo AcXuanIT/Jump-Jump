@@ -62,13 +62,13 @@ public class SelectManager : MonoBehaviour
     }
     public void OnClickBackHome()
     {
-        SoundHome.Instance.PlaySound();
+        SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
         this.panelHome.SetActive(true);
         this.panelSelect.SetActive(false);
     }
     public void ChangeCharacter(int x)
     {
-        SoundHome.Instance.PlaySound();
+        SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
         UpIndexPlayer(x);
         UpdatePlayer();
         UpTextInfo();
@@ -76,7 +76,7 @@ public class SelectManager : MonoBehaviour
     }
     public void OnClickPlay()
     {
-        SoundHome.Instance.PlaySound();
+        SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
         PlayerPrefs.SetInt("IndexSelect", indexSelect);
         SceneManager.LoadSceneAsync("Game");
     }
@@ -137,7 +137,7 @@ public class SelectManager : MonoBehaviour
     }
     public void OnClickSelect()
     {
-        SoundHome.Instance.PlaySound();
+        SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
         if (characters.characterInfos[indexPlayer].isOwn)
         {
             this.indexSelect = indexPlayer;
@@ -149,6 +149,7 @@ public class SelectManager : MonoBehaviour
             {
                 UpText();
                 characters.characterInfos[indexPlayer].isOwn = true;
+                SoundHome.Instance.PlaySound(SoundHome.Instance.soundBuyPlayer);
                 UpTextInfo();
             }
             else

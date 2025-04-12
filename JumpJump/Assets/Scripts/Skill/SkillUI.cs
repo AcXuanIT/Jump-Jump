@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
@@ -50,16 +49,18 @@ public class SkillUI : MonoBehaviour
     {
         btnImageSkill.onClick.AddListener(delegate
         {
-            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
+            SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
             this.skillInfo.SetActive(!isSkillInfo);
             isSkillInfo = !isSkillInfo;
         });
         btnUpLevelSkill.onClick.AddListener(delegate
         {
             if (isUplevel)
+            {
                 UpLevel();
+                SoundHome.Instance.PlaySound(SoundHome.Instance.soundUpLevel);
+            }
 
-            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClickButton);
             skillInfoUplevel.SetActive(!isUplevel);
             isUplevel = !isUplevel;
         });

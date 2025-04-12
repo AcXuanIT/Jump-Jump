@@ -59,11 +59,9 @@ public class SkillPlayer : MonoBehaviour
     IEnumerator EditSpeed(float time)
     {
         GameController.Instance.SpeedGame /= 2;
-        ObserverManager<IDGameEven>.PostEven(IDGameEven.TimeDelay, 0.5f);
 
         yield return new WaitForSeconds(time);
 
         GameController.Instance.SpeedGame *= 2;
-        ObserverManager<IDGameEven>.PostEven(IDGameEven.TimeDelay, 2f);
     }
 }
