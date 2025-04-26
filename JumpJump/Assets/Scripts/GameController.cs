@@ -176,7 +176,8 @@ public class GameController : Singleton<GameController>
 
     public void SaveHighScore(object obj = null)
     {
-        PlayerPrefs.SetInt("HighScore", this.scoreGame);
+        if(this.scoreGame > PlayerPrefs.GetInt("HighScore",0))
+            PlayerPrefs.SetInt("HighScore", this.scoreGame);
         PlayerPrefs.Save();
     }
 }

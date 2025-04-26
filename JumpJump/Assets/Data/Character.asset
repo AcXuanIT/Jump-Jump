@@ -18,10 +18,10 @@ MonoBehaviour:
     price: 1
     backGround: {fileID: 21300000, guid: 108b4a59f0db0f246b94cdef4f4d7f72, type: 3}
     skillSprite: {fileID: 21300000, guid: 1a35245d41de1054b875260896ce4026, type: 3}
-    priceUpSkill: 020000006300000003000000
+    priceUpSkill: 05000000140000001e000000
     textSkillInfo: "Ng\u01B0\u1EDDi ch\u01A1i c\xF3 kh\u1EA3 n\u0103ng nh\u1EADn
       x2 v\u1EADt ph\u1EA9m khi nh\u1EB7t.    15%/25%/40%"
-    levelSkill: 3
+    levelSkill: 0
     timeDelaySkill:
     - 10
     - 7
@@ -30,10 +30,10 @@ MonoBehaviour:
     isOwn: 1
   - animationHome: {fileID: 9100000, guid: 26f0922ff892f1a4d8a86855ca635efa, type: 2}
     animationGame: {fileID: 9100000, guid: 56927f5b2356a7f4585461afe62b1016, type: 2}
-    price: 1212
+    price: 20
     backGround: {fileID: 21300000, guid: 8d1ec99e578e11b48bc748522c2f3c39, type: 3}
     skillSprite: {fileID: 21300000, guid: 1492cb956994c89499ce81b76bec8236, type: 3}
-    priceUpSkill: 010000000200000003000000
+    priceUpSkill: 140000001900000023000000
     textSkillInfo: "Khi k\xEDch ho\u1EA1t skill, ng\u01B0\u1EDDi ch\u01A1i \u0111c
       nh\u1EA3y th\xEAm 1 l\u1EA7n n\u1EEFa. Th\u1EDDi gian ch\u1EDD 10s/7s/4s."
     levelSkill: 0
@@ -41,50 +41,50 @@ MonoBehaviour:
     - 10
     - 7
     - 4
-    isCoinAndDiamond: 0
-    isOwn: 1
+    isCoinAndDiamond: 1
+    isOwn: 0
   - animationHome: {fileID: 9100000, guid: 88ce543b0666c0a479bda89e4b6e621e, type: 2}
     animationGame: {fileID: 9100000, guid: bf1d291f64e104647b8382c88c26aacb, type: 2}
-    price: 9999
+    price: 50
     backGround: {fileID: 21300000, guid: 97a19f11dae88de4aba6dd97be087c6b, type: 3}
     skillSprite: {fileID: 21300000, guid: 86b5327c14699e6428d3c129f744b65f, type: 3}
-    priceUpSkill: 010000000200000003000000
+    priceUpSkill: 2d0000004100000046000000
     textSkillInfo: "Khi kh\xEDch ho\u1EA1t ng\u01B0\u1EDDi ch\u01A1i nh\u1EADn th\xEAm
       1 m\xE1u nh\u1EA5t \u0111\u1ECBnh . 60/45/40s"
-    levelSkill: 2
+    levelSkill: 0
     timeDelaySkill:
     - 60
     - 45
     - 40
     isCoinAndDiamond: 1
-    isOwn: 1
+    isOwn: 0
   - animationHome: {fileID: 9100000, guid: e51e68da061e149469fbb9541cda10ab, type: 2}
     animationGame: {fileID: 9100000, guid: d7cd72c06b012944b88e1652d25e535c, type: 2}
-    price: 1
+    price: 15
     backGround: {fileID: 21300000, guid: 442ea958d8bf54d4c8985ace70dd4512, type: 3}
     skillSprite: {fileID: 21300000, guid: 8196c4d2779060a479192858ac75fa8e, type: 3}
-    priceUpSkill: 010000000200000003000000
+    priceUpSkill: 0a0000000f00000019000000
     textSkillInfo: "K\xEDch ho\u1EA1t l\xE0m th\u1EDDi gian ch\u1EADm \u0111i 1 n\u1EEDa
       trong 4s.   20s/15s/8s."
-    levelSkill: 1
+    levelSkill: 0
     timeDelaySkill:
     - 20
     - 15
     - 8
-    isCoinAndDiamond: 1
-    isOwn: 1
+    isCoinAndDiamond: 0
+    isOwn: 0
   - animationHome: {fileID: 9100000, guid: 8a678159c2b849b4a88f9ac5424d07a8, type: 2}
     animationGame: {fileID: 9100000, guid: aa1f9e97079281045a48be2840562095, type: 2}
-    price: 1
+    price: 25
     backGround: {fileID: 21300000, guid: d9de4082de9d4a74ebce61c1fe5d6b56, type: 3}
     skillSprite: {fileID: 21300000, guid: dc7a092b09feac44d97bf240db74ae5f, type: 3}
-    priceUpSkill: 010000000200000003000000
+    priceUpSkill: 23000000320000004b000000
     textSkillInfo: "D\u1ECBch chuy\u1EC3n \u0111\u1EBFn n\u01A1i c\xF3 v\u1ECB tr\xED
       cao nh\u1EA5t. 20s/14s/7s."
-    levelSkill: 3
+    levelSkill: 0
     timeDelaySkill:
     - 20
     - 14
     - 7
-    isCoinAndDiamond: 1
-    isOwn: 1
+    isCoinAndDiamond: 0
+    isOwn: 0

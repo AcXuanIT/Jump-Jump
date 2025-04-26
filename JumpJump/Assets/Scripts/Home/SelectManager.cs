@@ -20,6 +20,7 @@ public class SelectManager : MonoBehaviour
     [SerializeField] private GameObject panelSelect;
     [SerializeField] private GameObject panelHome;
     [SerializeField] private Image BackGround;
+    [SerializeField] private GameObject panelSkill;
 
     [Space]
     [Header("Player")]
@@ -51,6 +52,7 @@ public class SelectManager : MonoBehaviour
         UpdatePlayer();
         UpTextInfo();
         UpSkill();
+        CheclOwn();
     }
     private void Start()
     {
@@ -73,6 +75,7 @@ public class SelectManager : MonoBehaviour
         UpdatePlayer();
         UpTextInfo();
         UpSkill();
+        CheclOwn();
     }
     public void OnClickPlay()
     {
@@ -151,6 +154,8 @@ public class SelectManager : MonoBehaviour
                 characters.characterInfos[indexPlayer].isOwn = true;
                 SoundHome.Instance.PlaySound(SoundHome.Instance.soundBuyPlayer);
                 UpTextInfo();
+
+                CheclOwn();
             }
             else
             {
@@ -186,4 +191,16 @@ public class SelectManager : MonoBehaviour
     {
         ObserverManager<IDGameEven>.PostEven(IDGameEven.UpSkillUI, indexPlayer);
     }
+    public void CheclOwn()
+    {
+        if (characters.characterInfos[indexPlayer].isOwn)
+        {
+            this.panelSkill.SetActive(true);
+        }
+        else
+        {
+            this.panelSkill.SetActive(false);
+        }
+    }
+    
 }

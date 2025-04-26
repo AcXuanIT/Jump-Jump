@@ -5753,6 +5753,7 @@ MonoBehaviour:
   panelSelect: {fileID: 1959079448}
   panelHome: {fileID: 514530606}
   BackGround: {fileID: 443826633}
+  panelSkill: {fileID: 1290228195}
   animator: {fileID: 1238974841}
   characters: {fileID: 11400000, guid: fb0f52f79bed1f047acff3a3be6dd3ad, type: 2}
   textInfoOwn: {fileID: 1229591214}
