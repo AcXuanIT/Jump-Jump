@@ -683,7 +683,7 @@ MonoBehaviour:
   coinGame: 0
   diamondGame: 0
   uiLose: {fileID: 1373100616}
-  maxSpeed: 0
+  maxSpeed: 5
 --- !u!4 &305645868
 Transform:
   m_ObjectHideFlags: 0

@@ -79,6 +79,8 @@ public class SelectManager : MonoBehaviour
     }
     public void OnClickPlay()
     {
+        if (!characters.characterInfos[indexSelect].isOwn) return;
+
         SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
         PlayerPrefs.SetInt("IndexSelect", indexSelect);
         SceneManager.LoadSceneAsync("Game");

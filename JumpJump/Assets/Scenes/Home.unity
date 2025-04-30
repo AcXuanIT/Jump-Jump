@@ -2046,6 +2046,7 @@ MonoBehaviour:
   pannelSelect: {fileID: 1959079448}
   menuSetting: {fileID: 42316224}
   textHighScore: {fileID: 1606625659}
+  character: {fileID: 11400000, guid: fb0f52f79bed1f047acff3a3be6dd3ad, type: 2}
 --- !u!1 &516023074
 GameObject:
   m_ObjectHideFlags: 0

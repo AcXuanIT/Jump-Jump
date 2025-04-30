@@ -22,8 +22,11 @@ public class HomeManager : MonoBehaviour
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI textHighScore;
 
+    [SerializeField] private Character character;
+
     private void Awake()
     {
+        CheckRemoveAllInfo();
         this.textHighScore.text = "High Score:\n" + PlayerPrefs.GetInt("HighScore", 0);
     }
     private void Start()
@@ -44,5 +47,13 @@ public class HomeManager : MonoBehaviour
             SoundHome.Instance.PlaySound(SoundHome.Instance.soundClickButton);
             menuSetting.SetActive(true);
         });
+    }
+    public void CheckRemoveAllInfo()
+    {
+        if (!character.characterInfos[0].isOwn)
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+        }
     }
 }

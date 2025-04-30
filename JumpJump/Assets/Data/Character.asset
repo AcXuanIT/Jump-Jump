@@ -15,7 +15,7 @@ MonoBehaviour:
   characterInfos:
   - animationHome: {fileID: 9100000, guid: 7dc8a4a75d28bbe4489f055bada45100, type: 2}
     animationGame: {fileID: 9100000, guid: fd44966f71c345146b30c5fb32d85495, type: 2}
-    price: 1
+    price: 0
     backGround: {fileID: 21300000, guid: 108b4a59f0db0f246b94cdef4f4d7f72, type: 3}
     skillSprite: {fileID: 21300000, guid: 1a35245d41de1054b875260896ce4026, type: 3}
     priceUpSkill: 05000000140000001e000000
@@ -26,8 +26,8 @@ MonoBehaviour:
     - 10
     - 7
     - 4
-    isCoinAndDiamond: 0
-    isOwn: 1
+    isCoinAndDiamond: 1
+    isOwn: 0
   - animationHome: {fileID: 9100000, guid: 26f0922ff892f1a4d8a86855ca635efa, type: 2}
     animationGame: {fileID: 9100000, guid: 56927f5b2356a7f4585461afe62b1016, type: 2}
     price: 20
